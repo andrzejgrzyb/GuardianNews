@@ -16,12 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Andrzej on 20.07.2017.
@@ -128,7 +124,6 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
                 String webTitle = oneResult.getString("webTitle");
                 String url = oneResult.getString("webUrl");
                 String date = oneResult.getString("webPublicationDate");
-                //date = formatDate(date);
                 String section = oneResult.getString("sectionName");
                 JSONArray tagsArray = oneResult.getJSONArray("tags");
                 String author = "";
@@ -148,18 +143,4 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         }
         return newsArrayList;
     }
-
-//    private static String formatDate(String rawDate) {
-//        String jsonDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-//        SimpleDateFormat jsonFormatter = new SimpleDateFormat(jsonDateFormat, Locale.US);
-//        try {
-//            Date parsedJsonDate = jsonFormatter.parse(rawDate);
-//            String finalDatePattern = "MMM d, yyy";
-//            SimpleDateFormat finalDateFormatter = new SimpleDateFormat(finalDatePattern, Locale.US);
-//            return finalDateFormatter.format(parsedJsonDate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//            return "";
-//        }
-//    }
 }
